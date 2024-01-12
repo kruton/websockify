@@ -482,7 +482,7 @@ class WebSockifyServer(object):
             if connect:
                 sock.connect(addrs[0][4])
                 if use_ssl:
-                    sock = ssl.wrap_socket(sock)
+                    sock = ssl.wrap_socket(sock, server_hostname=host)
             else:
                 sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 sock.bind(addrs[0][4])
